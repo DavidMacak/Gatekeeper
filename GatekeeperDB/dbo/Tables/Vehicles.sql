@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Vechicles]
+﻿CREATE TABLE [dbo].[Vehicles]
 (
 	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
 	[LicensePlate] NVARCHAR(10) NOT NULL
