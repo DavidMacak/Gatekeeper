@@ -9,6 +9,6 @@ namespace GatekeeperLib.Models
     public class JobModel
     {
         public int Id { get; set; }
-        public string Type { get; set; }
+        public string Type { get; set; } = string.Empty;
     }
 }
