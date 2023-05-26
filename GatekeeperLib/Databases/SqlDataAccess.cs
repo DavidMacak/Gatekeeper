@@ -5,7 +5,12 @@ using System.Data;
 
 namespace GatekeeperLib.Databases
 {
-    public class SqlDataAccess
+    /// <summary>
+    /// Přímo komunikuje s DB - načítá a ukládá data.
+    /// SqlData volá tyto metody už s předem vyplněnými parametry.
+    /// </summary>
+
+    public class SqlDataAccess : ISqlDataAccess
     {
         private readonly IConfiguration _config;
 
@@ -22,7 +27,7 @@ namespace GatekeeperLib.Databases
             string connectionString = _config.GetConnectionString(connectionStringName);
             CommandType commandType = CommandType.Text;
 
-            if(isStoredProcedure == true)
+            if (isStoredProcedure == true)
             {
                 commandType = CommandType.StoredProcedure;
             }
