@@ -61,6 +61,7 @@
     <Folder Include="dbo\Tables" />
     <Folder Include="dbo\Stored Procedures" />
     <Folder Include="Publish" />
+    <Folder Include="Queries" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Jobs.sql" />
@@ -69,7 +70,10 @@
     <Build Include="dbo\Tables\Vehicles.sql" />
     <Build Include="dbo\Tables\PersonEntries.sql" />
     <Build Include="dbo\Tables\VehicleEntries.sql" />
-    <Build Include="dbo\Tables\EntryPurpose.sql" />
+    <Build Include="dbo\Stored Procedures\spPersons_Create.sql" />
+    <Build Include="dbo\Stored Procedures\spPersons_FindByLastName.sql" />
+    <Build Include="dbo\Stored Procedures\spPersonEntries_UpdateExitTime.sql" />
+    <Build Include="dbo\Stored Procedures\spPersonEntries_Create.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish\GatekeeperDB.publish.xml" />

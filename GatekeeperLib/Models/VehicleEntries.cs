@@ -11,7 +11,6 @@ namespace GatekeeperLib.Models
         public int Id { get; set; }
         public int VehicleId { get; set; }
         public int PersonId { get; set; }
-        public string Purpose { get; set; } = string.Empty;
         public DateTime EnterTime { get; set; }
         public DateTime ExitTime { get; set; }
     }

@@ -1,5 +1,0 @@
-﻿CREATE TABLE [dbo].[EntryPurpose]
-(
-	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
-	[Purpose] NVARCHAR(100) NOT NULL
-)
