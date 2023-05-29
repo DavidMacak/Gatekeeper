@@ -74,6 +74,8 @@
     <Build Include="dbo\Stored Procedures\spPersons_FindByLastName.sql" />
     <Build Include="dbo\Stored Procedures\spPersonEntries_UpdateExitTime.sql" />
     <Build Include="dbo\Stored Procedures\spPersonEntries_Create.sql" />
+    <Build Include="dbo\Stored Procedures\spPersonEntries_LimitedLoad.sql" />
+    <Build Include="dbo\Stored Procedures\spPersons_LimitedLoad.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish\GatekeeperDB.publish.xml" />

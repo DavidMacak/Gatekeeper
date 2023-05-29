@@ -4,9 +4,32 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gatekeeper.Desktop"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        mc:Ignorable="d" FontSize="16"
+        Title="MainWindow" Height="650" Width="900">
     <Grid>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0">
+            <Button x:Name="personsButton" Margin="5" Padding="10 5" Click="personsButton_Click">Seznam osob</Button>
+            <Button x:Name="personEntriesButton" Margin="5" Padding="10 5" Click="personEntriesButton_Click">Vstupy osob</Button>
+            <Button x:Name="vehiclesButton" Margin="5" Padding="10 5">Seznam vozidel</Button>
+            <Button x:Name="vehicleEntriesButton" Margin="5" Padding="10 5">Vjezdy vozidel</Button>
+        </StackPanel>
+
+        <Frame x:Name="mainFrame"  Grid.Column="1" Grid.Row="1">
+            
+        </Frame>
+        
+        
     </Grid>
 </Window>

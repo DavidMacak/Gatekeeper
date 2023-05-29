@@ -1,4 +1,5 @@
-﻿using GatekeeperLib.Data;
+﻿using Gatekeeper.Desktop.Pages;
+using GatekeeperLib.Data;
 using GatekeeperLib.Databases;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,16 +18,19 @@ namespace Gatekeeper.Desktop
 
             var services = new ServiceCollection();
             services.AddTransient<MainWindow>();
+            services.AddTransient<PersonsPage>();
+            services.AddTransient<PersonEntriesPage>();
             services.AddTransient<ISqlDataAccess, SqlDataAccess>();
-            services.AddTransient<ISqlData, SqlData>();
 
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json");
 
             IConfiguration config = builder.Build();
-
             services.AddSingleton(config);
+
+            // Tady můžeme udělat if pokud bychom potřebovali jinou DB (sqlite)
+            services.AddTransient<IDatabaseData, SqlData>();
 
             serviceProvider = services.BuildServiceProvider();
             var mainWindow = serviceProvider.GetService<MainWindow>();
