@@ -29,7 +29,7 @@ namespace GatekeeperLib.Data
         /// <returns></returns>
         public List<PersonModel> LoadPersons(int personsCount = 50)
         {
-            List<PersonModel> persons = _db.LoadData<PersonModel, dynamic>("spPersons_LimitedLoad", new { personsCount }, connectionStringName, true);
+            List<PersonModel> persons = _db.LoadData<PersonModel, dynamic>("dbo.spPersons_LimitedLoad", new { personsCount }, connectionStringName, true);
             return persons;
         }
         /// <summary>
@@ -39,7 +39,7 @@ namespace GatekeeperLib.Data
         /// <returns></returns>
         public List<PersonEntriesFullModel> LoadPersonEntries(int entriesCount = 50)
         {
-            List<PersonEntriesFullModel> personEntries = _db.LoadData<PersonEntriesFullModel, dynamic>("spPersonEntries_LimitedLoad",
+            List<PersonEntriesFullModel> personEntries = _db.LoadData<PersonEntriesFullModel, dynamic>("dbo.spPersonEntries_LimitedLoad",
                                                                                                        new { entriesCount },
                                                                                                        connectionStringName,
                                                                                                        true);
@@ -52,7 +52,7 @@ namespace GatekeeperLib.Data
         /// <param name="lastName"></param>
         public void CreatePerson(string firstName, string lastName)
         {
-            _db.SaveData("spPersons_Create", new { firstName, lastName }, connectionStringName, true);
+            _db.SaveData("dbo.spPersons_Create", new { firstName, lastName }, connectionStringName, true);
         }
         /// <summary>
         /// Finds all persons with same last name.
@@ -61,7 +61,7 @@ namespace GatekeeperLib.Data
         /// <returns></returns>
         public List<PersonModel> FindPersons(string lastName)
         {
-            List<PersonModel> rows = _db.LoadData<PersonModel, dynamic>("spPersons_FindByLastName", new { lastName }, connectionStringName, true);
+            List<PersonModel> rows = _db.LoadData<PersonModel, dynamic>("dbo.spPersons_FindByLastName", new { lastName }, connectionStringName, true);
             return rows;
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace GatekeeperLib.Data
         /// <param name="entryTime"></param>
         public void CreatePersonEntry(int personId, DateTime entryTime)
         {
-            _db.SaveData("spPersonEntries_Create", new { personId, entryTime }, connectionStringName, true);
+            _db.SaveData("dbo.spPersonEntries_Create", new { personId, entryTime }, connectionStringName, true);
         }
         /// <summary>
         /// Adds exit time to specified person entry.
@@ -80,7 +80,7 @@ namespace GatekeeperLib.Data
         /// <param name="exitTime"></param>
         public void UpdatePersonExit(int entryId, DateTime exitTime)
         {
-            _db.SaveData("spPersonEntries_UpdateExitTime", new { entryId, exitTime }, connectionStringName, true);
+            _db.SaveData("dbo.spPersonEntries_UpdateExitTime", new { entryId, exitTime }, connectionStringName, true);
         }
 
         public List<VehicleEntriesFullModel> LoadVehicleEntries()

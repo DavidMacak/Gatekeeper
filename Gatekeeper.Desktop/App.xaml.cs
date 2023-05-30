@@ -1,4 +1,5 @@
 ﻿using Gatekeeper.Desktop.Pages;
+using Gatekeeper.Desktop.Windows;
 using GatekeeperLib.Data;
 using GatekeeperLib.Databases;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +23,7 @@ namespace Gatekeeper.Desktop
             services.AddTransient<PersonEntriesPage>();                     // tranzient= každé volání = nová instance
             services.AddTransient<VehiclesPage>();
             services.AddTransient<VehicleEntriesPage>();
+            services.AddTransient<CreatePersonWindow>();
             services.AddSingleton<HomePage>();                              // singleton = pokaždé stejné okno
             services.AddTransient<ISqlDataAccess, SqlDataAccess>();
 
@@ -32,8 +34,17 @@ namespace Gatekeeper.Desktop
             IConfiguration config = builder.Build();
             services.AddSingleton(config);
 
-            // Tady můžeme udělat if pokud bychom potřebovali jinou DB (sqlite)
-            services.AddTransient<IDatabaseData, SqlData>();
+            string dbChoice = config.GetValue<string>("DatabaseChoice").ToLower();
+
+            if(dbChoice == "sqldb")
+            {
+                services.AddTransient<IDatabaseData, SqlData>();
+
+            }
+            else
+            {
+                services.AddTransient<IDatabaseData, SqlData>();
+            }
 
             serviceProvider = services.BuildServiceProvider();
             var mainWindow = serviceProvider.GetService<MainWindow>();

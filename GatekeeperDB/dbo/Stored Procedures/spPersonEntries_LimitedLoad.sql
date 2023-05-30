@@ -2,7 +2,7 @@
 	@entriesCount INT
 AS
 BEGIN
-	SET NOCOUNT ON
+	SET NOCOUNT ON;
 
 	SELECT TOP (@entriesCount) e.Id, e.PersonId, e.EntryTime, e.ExitTime,
 				p.FirstName, p.LastName

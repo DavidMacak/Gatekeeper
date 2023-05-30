@@ -3,7 +3,7 @@
 	@exitTime DATETIME
 AS
 BEGIN
-	SET NOCOUNT ON
+	SET NOCOUNT ON;
 
 	UPDATE dbo.PersonEntries 
 	SET ExitTime = @exitTime

@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
-            <Button x:Name="createPersonButton" Margin="5" Padding="10 5">Vytvořit osobu</Button>
+            <Button x:Name="createPersonButton" Margin="5" Padding="10 5" Click="createPersonButton_Click">Vytvořit osobu</Button>
             <Button x:Name="editPersonButton" Margin="5" Padding="10 5">Upravit osobu</Button>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="right" Grid.Column="1" Grid.Row="0">

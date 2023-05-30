@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Gatekeeper.Desktop.Windows;
+using GatekeeperLib.Data;
+using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Gatekeeper.Desktop.Pages
 {
@@ -20,9 +11,17 @@ namespace Gatekeeper.Desktop.Pages
     /// </summary>
     public partial class PersonsPage : Page
     {
-        public PersonsPage()
+        private IDatabaseData _db;
+
+        public PersonsPage(IDatabaseData db)
         {
             InitializeComponent();
+            _db = db;
+        }
+
+        private void createPersonButton_Click(object sender, RoutedEventArgs e)
+        {
+            App.serviceProvider.GetService<CreatePersonWindow>().Show();
         }
     }
 }

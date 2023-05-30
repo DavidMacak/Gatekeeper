@@ -1,0 +1,25 @@
+﻿<Window x:Class="Gatekeeper.Desktop.Windows.CreatePersonWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gatekeeper.Desktop.Windows"
+        mc:Ignorable="d" FontSize="16" ResizeMode="NoResize"
+        Title="CreatePersonWindow" Height="150" Width="350">
+    <Grid>
+
+        <StackPanel Orientation="Vertical" Margin="10">
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                <TextBlock Width="80">Jméno:</TextBlock>
+                <TextBox x:Name="firstNameTextBox" Width="230"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                <TextBlock Width="80">Příjmení:</TextBlock>
+                <TextBox x:Name="lastNameTextBox" Width="230"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="createPersonButton" Width="100" Click="createPersonButton_Click">Vytvořit</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
