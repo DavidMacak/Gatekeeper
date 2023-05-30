@@ -15,6 +15,7 @@ namespace Gatekeeper.Desktop
         {
             InitializeComponent();
             _db = db;
+            mainFrame.Content = App.serviceProvider.GetService<HomePage>();
         }
 
         private void personsButton_Click(object sender, RoutedEventArgs e)
@@ -25,6 +26,21 @@ namespace Gatekeeper.Desktop
         private void personEntriesButton_Click(object sender, RoutedEventArgs e)
         {
             mainFrame.Content = App.serviceProvider.GetService<PersonEntriesPage>();
+        }
+
+        private void homePageButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = App.serviceProvider.GetService<HomePage>();
+        }
+
+        private void vehiclesButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = App.serviceProvider.GetService<VehiclesPage>();
+        }
+
+        private void vehicleEntriesButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = App.serviceProvider.GetService<VehicleEntriesPage>();
         }
     }
 }

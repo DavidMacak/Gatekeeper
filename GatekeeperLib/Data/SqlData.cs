@@ -83,9 +83,9 @@ namespace GatekeeperLib.Data
             _db.SaveData("spPersonEntries_UpdateExitTime", new { entryId, exitTime }, connectionStringName, true);
         }
 
-        public List<VehicleEntries> LoadVehicleEntries()
+        public List<VehicleEntriesFullModel> LoadVehicleEntries()
         {
-            List<VehicleEntries> vehicleEntries = new List<VehicleEntries>();
+            List<VehicleEntriesFullModel> vehicleEntries = new List<VehicleEntriesFullModel>();
             return vehicleEntries;
         }
 

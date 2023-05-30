@@ -1,0 +1,55 @@
+﻿<Page x:Class="Gatekeeper.Desktop.Pages.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Gatekeeper.Desktop.Pages"
+      mc:Ignorable="d" Background="white" FontSize="16"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="HomePage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+            <TextBlock HorizontalAlignment="center" FontWeight="Bold" FontSize="24" Padding="20">Gatekeeper</TextBlock>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" >
+            <TextBlock TextWrapping="Wrap" Margin="0 0 0 10">Jednoduchá aplikace pro záznam průchodů osob a vozidel.</TextBlock>
+        </StackPanel>
+
+        <!--<StackPanel Grid.Row="2" Grid.Column="1" Orientation="horizontal" HorizontalAlignment="Center">
+            <TextBlock Padding="20 0">
+                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/DavidMacak/Gatekeeper">
+                    <TextBlock Text="Github" />
+                </Hyperlink>
+            </TextBlock>
+            <TextBlock Padding="20 0">
+                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://davak.cz">
+                    <TextBlock Text="DAVAK.cz" />
+                </Hyperlink>
+            </TextBlock>
+        </StackPanel>-->
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" Height="30" >
+            <ComboBox x:Name="dbChoiceComboBox" Width="100" >
+                <ComboBoxItem IsSelected="True">SQL</ComboBoxItem>
+                <ComboBoxItem IsEnabled="False">SQLite</ComboBoxItem>
+            </ComboBox>
+            <Button Width="80">Nastavit</Button>
+        </StackPanel>
+        
+
+
+    </Grid>
+</Page>

@@ -1,4 +1,4 @@
-﻿<Page x:Class="Gatekeeper.Desktop.Pages.PersonEntriesPage"
+﻿<Page x:Class="Gatekeeper.Desktop.Pages.VehiclesPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Gatekeeper.Desktop.Pages"
       mc:Ignorable="d" Background="white" FontSize="16"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PersonEntriesPage">
+      Title="VehiclesPage">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -19,21 +19,18 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
-            <Button x:Name="createPersonEntryButton" Margin="5" Padding="10 5">Vytvořit průchod osoby</Button>
-            <Button x:Name="editPersonEntryButton" Margin="5" Padding="10 5">Upravit průchod</Button>
+            <Button x:Name="createVehicleButton" Margin="5" Padding="10 5">Vytvořit vozidlo</Button>
+            <Button x:Name="editVehicleButton" Margin="5" Padding="10 5">Upravit vozidlo</Button>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="right" Grid.Column="1" Grid.Row="0">
             <Button x:Name="reloadButton" Margin="5" Padding="10 5">Aktualizovat</Button>
         </StackPanel>
 
-        <ListView Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Source=PersonEntriesFullModel}">
+        <ListView Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Source=VehicleModel}">
             <ListView.View>
                 <GridView AllowsColumnReorder="True">
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id" Width="40"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=FirstName}" Header="Jméno" Width="100"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=LastName}" Header="Příjmení" Width="100"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=EnterTime}" Header="Příchod" Width="150"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=ExitTime}" Header="Odchod" Width="150"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=PlateNumber}" Header="SPZ" Width="100"/>
                 </GridView>
             </ListView.View>
         </ListView>

@@ -19,7 +19,10 @@ namespace Gatekeeper.Desktop
             var services = new ServiceCollection();
             services.AddTransient<MainWindow>();
             services.AddTransient<PersonsPage>();
-            services.AddTransient<PersonEntriesPage>();
+            services.AddTransient<PersonEntriesPage>();                     // tranzient= každé volání = nová instance
+            services.AddTransient<VehiclesPage>();
+            services.AddTransient<VehicleEntriesPage>();
+            services.AddSingleton<HomePage>();                              // singleton = pokaždé stejné okno
             services.AddTransient<ISqlDataAccess, SqlDataAccess>();
 
             var builder = new ConfigurationBuilder()
