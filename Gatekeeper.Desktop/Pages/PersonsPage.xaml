@@ -23,15 +23,15 @@
             <Button x:Name="editPersonButton" Margin="5" Padding="10 5">Upravit osobu</Button>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="right" Grid.Column="1" Grid.Row="0">
-            <Button x:Name="reloadButton" Margin="5" Padding="10 5">Aktualizovat</Button>
+            <Button x:Name="reloadButton" Margin="5" Padding="10 5" Click="reloadButton_Click">Aktualizovat</Button>
         </StackPanel>
 
-        <ListView Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Source=PersonModel}">
+        <ListView Grid.Column="0" Grid.Row="1" x:Name="personsListView" ItemsSource="{Binding Source=PersonModel}">
             <ListView.View>
                 <GridView AllowsColumnReorder="True">
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id" Width="40"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=FirstName}" Header="Jméno" Width="100"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=LastName}" Header="Příjmení" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id" Width="80"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=FirstName}" Header="Jméno" Width="120"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=LastName}" Header="Příjmení" Width="120"/>
                 </GridView>
             </ListView.View>
         </ListView>

@@ -1,5 +1,8 @@
-﻿using GatekeeperLib.Data;
+﻿using Gatekeeper.Desktop.Pages;
+using GatekeeperLib.Data;
 using GatekeeperLib.Models;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Windows;
 
 namespace Gatekeeper.Desktop.Windows
@@ -10,6 +13,7 @@ namespace Gatekeeper.Desktop.Windows
     public partial class CreatePersonWindow : Window
     {
         private IDatabaseData _db;
+        public event EventHandler PersonCreated;
 
         public CreatePersonWindow(IDatabaseData db)
         {
@@ -31,7 +35,10 @@ namespace Gatekeeper.Desktop.Windows
             }
 
             _db.CreatePerson(person.FirstName, person.LastName);
+            PersonCreated?.Invoke(this, EventArgs.Empty);
             this.Close();
         }
+
+
     }
 }
