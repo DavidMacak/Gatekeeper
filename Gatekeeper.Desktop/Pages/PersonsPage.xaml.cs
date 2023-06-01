@@ -34,13 +34,13 @@ namespace Gatekeeper.Desktop.Pages
         {
             var createPersonWindow = App.serviceProvider.GetService<CreatePersonWindow>();
 
-            createPersonWindow.PersonCreated += OnPersonCreated;
+            createPersonWindow.PersonCreated += OnPropertyChanged;
             createPersonWindow.Owner = Application.Current.MainWindow;
             createPersonWindow.ShowDialog();
-            createPersonWindow.PersonCreated -= OnPersonCreated;
+            createPersonWindow.PersonCreated -= OnPropertyChanged;
         }
 
-        private void OnPersonCreated(object? sender, EventArgs e)
+        private void OnPropertyChanged(object? sender, EventArgs e)
         {
             LoadPersons();
         }
@@ -48,6 +48,22 @@ namespace Gatekeeper.Desktop.Pages
         private void reloadButton_Click(object sender, RoutedEventArgs e)
         {
             LoadPersons();
+        }
+
+        private void editPersonButton_Click(object sender, RoutedEventArgs e)
+        {
+            var editPersonWindow = App.serviceProvider.GetService<EditPersonWindow>();
+            editPersonWindow.Owner = Application.Current.MainWindow;
+            editPersonWindow.PersonEdited += OnPropertyChanged;
+
+            if(personsListView.SelectedItem != null)
+            {
+                PersonModel selectedPerson = personsListView.SelectedItem as PersonModel;
+                editPersonWindow.PopulateEditPersonWindow(selectedPerson);
+                editPersonWindow.ShowDialog();
+            }
+
+            editPersonWindow.PersonEdited -= OnPropertyChanged;
         }
     }
 }

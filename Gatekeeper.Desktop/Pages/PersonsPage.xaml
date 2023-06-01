@@ -20,13 +20,13 @@
 
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
             <Button x:Name="createPersonButton" Margin="5" Padding="10 5" Click="createPersonButton_Click">Vytvořit osobu</Button>
-            <Button x:Name="editPersonButton" Margin="5" Padding="10 5">Upravit osobu</Button>
+            <Button x:Name="editPersonButton" Margin="5" Padding="10 5" Click="editPersonButton_Click">Upravit osobu</Button>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="right" Grid.Column="1" Grid.Row="0">
             <Button x:Name="reloadButton" Margin="5" Padding="10 5" Click="reloadButton_Click">Aktualizovat</Button>
         </StackPanel>
 
-        <ListView Grid.Column="0" Grid.Row="1" x:Name="personsListView" ItemsSource="{Binding Source=PersonModel}">
+        <ListView Grid.Column="0" Grid.Row="1" x:Name="personsListView" SelectionMode="Single" ItemsSource="{Binding Source=PersonModel}">
             <ListView.View>
                 <GridView AllowsColumnReorder="True">
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id" Width="80"/>

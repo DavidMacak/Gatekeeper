@@ -54,6 +54,10 @@ namespace GatekeeperLib.Data
         {
             _db.SaveData("dbo.spPersons_Create", new { firstName, lastName }, connectionStringName, true);
         }
+        public void EditPerson(int id, string firstName, string lastName)
+        {
+            _db.SaveData("dbo.spPersons_Edit", new {id, firstName, lastName }, connectionStringName, true);
+        }
         /// <summary>
         /// Finds all persons with same last name.
         /// </summary>

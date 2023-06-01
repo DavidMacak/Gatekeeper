@@ -24,6 +24,7 @@ namespace Gatekeeper.Desktop
             services.AddSingleton<VehiclesPage>();
             services.AddSingleton<VehicleEntriesPage>();
             services.AddTransient<CreatePersonWindow>();
+            services.AddTransient<EditPersonWindow>();
             services.AddSingleton<HomePage>();                              // singleton = pokaždé stejné okno
             services.AddTransient<ISqlDataAccess, SqlDataAccess>();
 
