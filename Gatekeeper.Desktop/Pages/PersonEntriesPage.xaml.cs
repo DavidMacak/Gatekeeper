@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Gatekeeper.Desktop.Windows;
+using GatekeeperLib.Data;
+using GatekeeperLib.Models;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +24,43 @@ namespace Gatekeeper.Desktop.Pages
     /// </summary>
     public partial class PersonEntriesPage : Page
     {
-        public PersonEntriesPage()
+        IDatabaseData _db;
+
+        public PersonEntriesPage(IDatabaseData db)
         {
             InitializeComponent();
+            _db = db;
+            LoadPersonEntries();
+        }
+
+        private void LoadPersonEntries()
+        {
+            List<PersonEntriesFullModel> entries = _db.LoadPersonEntries();
+            personEntriesListView.ItemsSource = entries;
+        }
+        private void createPersonEntryButton_Click(object sender, RoutedEventArgs e)
+        {
+            var createEntryWindow = App.serviceProvider.GetService<CreatePersonEntryWindow>();
+
+            createEntryWindow.EntryCreated += OnPropertyChanged;
+            createEntryWindow.Owner = Application.Current.MainWindow;
+            createEntryWindow.ShowDialog();
+            createEntryWindow.EntryCreated -= OnPropertyChanged;
+        }
+
+        private void editPersonEntryButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void reloadButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoadPersonEntries();
+        }
+
+        private void OnPropertyChanged(object? sender, EventArgs e)
+        {
+            LoadPersonEntries();
         }
     }
 }

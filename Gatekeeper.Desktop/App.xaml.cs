@@ -16,16 +16,21 @@ namespace Gatekeeper.Desktop
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
+            // singleton = každé volání je stejná instance
+            // tranzient = každé volání je nová instance
             var services = new ServiceCollection();
             services.AddTransient<MainWindow>();
+
             services.AddSingleton<PersonsPage>();
-            services.AddSingleton<PersonEntriesPage>();                     // tranzient= každé volání = nová instance
+            services.AddSingleton<PersonEntriesPage>();                     
             services.AddSingleton<VehiclesPage>();
             services.AddSingleton<VehicleEntriesPage>();
+
             services.AddTransient<CreatePersonWindow>();
             services.AddTransient<EditPersonWindow>();
-            services.AddSingleton<HomePage>();                              // singleton = pokaždé stejné okno
+            services.AddTransient<CreatePersonEntryWindow>();
+
+            services.AddSingleton<HomePage>();                              
             services.AddTransient<ISqlDataAccess, SqlDataAccess>();
 
             var builder = new ConfigurationBuilder()

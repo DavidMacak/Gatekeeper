@@ -1,0 +1,44 @@
+﻿<Window x:Class="Gatekeeper.Desktop.Windows.CreatePersonEntryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gatekeeper.Desktop.Windows"
+        mc:Ignorable="d" FontSize="16" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
+        Title="CreatePersonEntryWindow" Height="350" Width="600">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" Margin="5" Grid.Row="0">
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                <TextBlock Width="80">Čas:</TextBlock>
+                <TextBox x:Name="entryDateTimeTextBox" Width="230"></TextBox>
+                <Button x:Name="currentDateTimeButton" Margin="5 0" Width="80" Click="currentDateTimeButton_Click">Teď</Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                <TextBlock Width="80">Příjmení:</TextBlock>
+                <TextBox x:Name="lastNameTextBox" Width="230"></TextBox>
+                <Button x:Name="findPersonButton" Margin="5 0" Width="80" Click="findPersonButton_Click">Hledat</Button>
+            </StackPanel>
+        </StackPanel>
+        <Button x:Name="createEntryButton" Grid.Column="1" Margin="10" Width="140" Height="40" Click="createEntryButton_Click">Vytvořit průchod</Button>
+
+        <ListView x:Name="personsListView" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Source=PersonModel}" SelectionMode="Single">
+            <ListView.View>
+                <GridView AllowsColumnReorder="True">
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id" Width="40"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=FirstName}" Header="Jméno" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=LastName}" Header="Příjmení" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
