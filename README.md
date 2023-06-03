@@ -4,11 +4,13 @@ Aplikace pro záznam vstupů a odchodů osob a vozidel. Bude obsahovat WPF a ASP
 
 
 
-## Features
+## Obsahuje
 
+- .NET 7
 - WPF
 - SQL stored procedures
-- DI, Dapper
+- Dependency Injection
+- Dapper
 
 
 ## Roadmap
@@ -17,6 +19,6 @@ Aplikace pro záznam vstupů a odchodů osob a vozidel. Bude obsahovat WPF a ASP
 - ASP.NET webová aplikace se stejnými funkcemi jako WPF
 
 
-## Installation
+## Instalace
 
 soon™
