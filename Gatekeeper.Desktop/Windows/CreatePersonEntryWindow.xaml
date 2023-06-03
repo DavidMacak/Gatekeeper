@@ -34,7 +34,7 @@
         <ListView x:Name="personsListView" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Source=PersonModel}" SelectionMode="Single">
             <ListView.View>
                 <GridView AllowsColumnReorder="True">
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id" Width="40"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id" Width="80"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=FirstName}" Header="Jméno" Width="100"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=LastName}" Header="Příjmení" Width="100"/>
                 </GridView>

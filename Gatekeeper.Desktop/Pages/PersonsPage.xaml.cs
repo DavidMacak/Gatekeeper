@@ -9,9 +9,6 @@ using System.Windows.Controls;
 
 namespace Gatekeeper.Desktop.Pages
 {
-    /// <summary>
-    /// Interaction logic for Persons.xaml
-    /// </summary>
     public partial class PersonsPage : Page
     {
         private IDatabaseData _db;

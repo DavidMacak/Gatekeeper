@@ -82,7 +82,7 @@ namespace GatekeeperLib.Data
         /// </summary>
         /// <param name="entryId"></param>
         /// <param name="exitTime"></param>
-        public void UpdatePersonExit(int entryId, DateTime exitTime)
+        public void UpdatePersonExitTime(int entryId, DateTime exitTime)
         {
             _db.SaveData("dbo.spPersonEntries_UpdateExitTime", new { entryId, exitTime }, connectionStringName, true);
         }

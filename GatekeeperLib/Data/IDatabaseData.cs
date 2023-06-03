@@ -13,7 +13,7 @@ namespace GatekeeperLib.Data
         List<PersonModel> LoadPersons(int personsCount = 50);
         List<VehicleEntriesFullModel> LoadVehicleEntries();
         void EditPerson(int id, string firstName, string lastName);
-        void UpdatePersonExit(int entryId, DateTime exitTime);
+        void UpdatePersonExitTime(int entryId, DateTime exitTime);
         void UpdateVehicleExit();
     }
 }

@@ -29,6 +29,7 @@ namespace Gatekeeper.Desktop
             services.AddTransient<CreatePersonWindow>();
             services.AddTransient<EditPersonWindow>();
             services.AddTransient<CreatePersonEntryWindow>();
+            services.AddTransient<UpdatePersonEntryWindow>();
 
             services.AddSingleton<HomePage>();                              
             services.AddTransient<ISqlDataAccess, SqlDataAccess>();

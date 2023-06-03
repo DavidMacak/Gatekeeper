@@ -12,7 +12,7 @@ namespace GatekeeperLib.Models
         public int PersonId { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
-        public DateTime EnterTime { get; set; }
-        public DateTime ExitTime { get; set; }
+        public DateTime EntryTime { get; set; }
+        public DateTime? ExitTime { get; set; }
     }
 }

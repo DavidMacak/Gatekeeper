@@ -2,23 +2,10 @@
 using GatekeeperLib.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Gatekeeper.Desktop.Windows
 {
-    /// <summary>
-    /// Interaction logic for CreatePersonEntryWindow.xaml
-    /// </summary>
     public partial class CreatePersonEntryWindow : Window
     {
         private IDatabaseData _db;

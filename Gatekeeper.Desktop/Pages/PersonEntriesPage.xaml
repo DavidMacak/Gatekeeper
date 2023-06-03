@@ -29,11 +29,11 @@
         <ListView x:Name="personEntriesListView" Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Source=PersonEntriesFullModel}">
             <ListView.View>
                 <GridView AllowsColumnReorder="True">
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id" Width="40"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id" Width="60"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=FirstName}" Header="Jméno" Width="100"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=LastName}" Header="Příjmení" Width="100"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=EnterTime}" Header="Příchod" Width="150"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=ExitTime}" Header="Odchod" Width="150"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=EntryTime,StringFormat={}{0:dd.MM.yyyy HH:mm:ss}}" Header="Příchod" Width="180"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=ExitTime, StringFormat={}{0:dd.MM.yyyy HH:mm:ss}, TargetNullValue=''}" Header="Odchod" Width="180"/>
                 </GridView>
             </ListView.View>
         </ListView>
