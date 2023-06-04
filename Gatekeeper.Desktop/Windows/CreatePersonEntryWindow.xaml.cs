@@ -35,7 +35,7 @@ namespace Gatekeeper.Desktop.Windows
             if(personsListView.SelectedItem != null)
             {
                 PersonModel selectedPerson = personsListView.SelectedItem as PersonModel;
-                _db.CreatePersonEntry(selectedPerson.Id, DateTime.Now);
+                _db.CreatePersonEntry(selectedPerson.Id, DateTime.Parse(entryDateTimeTextBox.Text));
                 EntryCreated?.Invoke(this, new EventArgs());
                 this.Close();
             }

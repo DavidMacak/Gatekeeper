@@ -22,21 +22,11 @@ namespace GatekeeperLib.Data
             _db = db;
         }
 
-        /// <summary>
-        /// Loads x number of persons from DB.
-        /// </summary>
-        /// <param name="personsCount">How much records we want to load from DB.</param>
-        /// <returns></returns>
         public List<PersonModel> LoadPersons(int personsCount = 50)
         {
             List<PersonModel> persons = _db.LoadData<PersonModel, dynamic>("dbo.spPersons_LimitedLoad", new { personsCount }, connectionStringName, true);
             return persons;
         }
-        /// <summary>
-        /// Loads x number of person entries from DB.
-        /// </summary>
-        /// <param name="entriesCount">How much records we want to load from DB.</param>
-        /// <returns></returns>
         public List<PersonEntriesFullModel> LoadPersonEntries(int entriesCount = 50)
         {
             List<PersonEntriesFullModel> personEntries = _db.LoadData<PersonEntriesFullModel, dynamic>("dbo.spPersonEntries_LimitedLoad",
@@ -45,67 +35,49 @@ namespace GatekeeperLib.Data
                                                                                                        true);
             return personEntries;
         }
-        /// <summary>
-        /// Creates new person if it does't exist in DB.
-        /// </summary>
-        /// <param name="firstName"></param>
-        /// <param name="lastName"></param>
         public void CreatePerson(string firstName, string lastName)
         {
             _db.SaveData("dbo.spPersons_Create", new { firstName, lastName }, connectionStringName, true);
         }
         public void EditPerson(int id, string firstName, string lastName)
         {
-            _db.SaveData("dbo.spPersons_Edit", new {id, firstName, lastName }, connectionStringName, true);
+            _db.SaveData("dbo.spPersons_Edit", new { id, firstName, lastName }, connectionStringName, true);
         }
-        /// <summary>
-        /// Finds all persons with same last name.
-        /// </summary>
-        /// <param name="lastName"></param>
-        /// <returns></returns>
         public List<PersonModel> FindPersons(string lastName)
         {
             List<PersonModel> rows = _db.LoadData<PersonModel, dynamic>("dbo.spPersons_FindByLastName", new { lastName }, connectionStringName, true);
             return rows;
         }
-        /// <summary>
-        /// Creates new person entry.
-        /// </summary>
-        /// <param name="personId"></param>
-        /// <param name="entryTime"></param>
         public void CreatePersonEntry(int personId, DateTime entryTime)
         {
             _db.SaveData("dbo.spPersonEntries_Create", new { personId, entryTime }, connectionStringName, true);
         }
-        /// <summary>
-        /// Adds exit time to specified person entry.
-        /// </summary>
-        /// <param name="entryId"></param>
-        /// <param name="exitTime"></param>
         public void UpdatePersonExitTime(int entryId, DateTime exitTime)
         {
             _db.SaveData("dbo.spPersonEntries_UpdateExitTime", new { entryId, exitTime }, connectionStringName, true);
         }
 
-        public List<VehicleEntriesFullModel> LoadVehicleEntries()
+        public List<VehicleModel> LoadVehicles(int vehicleCount = 50)
         {
-            List<VehicleEntriesFullModel> vehicleEntries = new List<VehicleEntriesFullModel>();
+            List<VehicleModel> vehicles = _db.LoadData<VehicleModel, dynamic>("dbo.spVehicles_LimitedLoad", new { vehicleCount }, connectionStringName, true);
+            return vehicles;
+        }
+        public List<VehicleEntriesFullModel> LoadVehicleEntries(int vehicleCount = 50)
+        {
+            List<VehicleEntriesFullModel> vehicleEntries = _db.LoadData<VehicleEntriesFullModel, dynamic>("spo.spVehicleEntries_LimitedLoad", new { vehicleCount }, connectionStringName, true);
             return vehicleEntries;
         }
-
-        public void CreateVehicle()
+        public void CreateVehicle(string licensePlate)
         {
-
+            _db.SaveData("dbo.spVehicles_Create", new { licensePlate }, connectionStringName, true);
         }
-
-        public void CreateVehicleEntry()
+        public void CreateVehicleEntry(int vehicleId, int personId, DateTime entryTime)
         {
-
+            _db.SaveData("dbo.spVehicleEntries_Create", new { vehicleId, personId, entryTime }, connectionStringName, true);
         }
-
-        public void UpdateVehicleExit()
+        public void UpdateVehicleExit(int entryId, DateTime exitTime)
         {
-
+            _db.SaveData("dbo.spVehicleEntries_UpdateExitTime", new { entryId, exitTime }, connectionStringName, true);
         }
 
     }

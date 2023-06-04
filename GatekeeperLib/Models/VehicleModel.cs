@@ -9,6 +9,6 @@ namespace GatekeeperLib.Models
     public class VehicleModel
     {
         public int Id { get; set; }
-        public string PlateNumber { get; set; } = string.Empty;
+        public string LicensePlate { get; set; } = string.Empty;
     }
 }

@@ -77,6 +77,11 @@
     <Build Include="dbo\Stored Procedures\spPersonEntries_LimitedLoad.sql" />
     <Build Include="dbo\Stored Procedures\spPersons_LimitedLoad.sql" />
     <Build Include="dbo\Stored Procedures\spPersons_Edit.sql" />
+    <Build Include="dbo\Stored Procedures\spVehicles_Create.sql" />
+    <Build Include="dbo\Stored Procedures\spVehicles_Edit.sql" />
+    <Build Include="dbo\Stored Procedures\spVehicles_LimitedLoad.sql" />
+    <Build Include="dbo\Stored Procedures\spVehicles_FindByLicensePlate.sql" />
+    <Build Include="dbo\Stored Procedures\spVehicleEntries_LimitedLoad.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish\GatekeeperDB.publish.xml" />

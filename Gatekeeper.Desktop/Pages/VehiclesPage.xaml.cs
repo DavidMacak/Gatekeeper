@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GatekeeperLib.Data;
+using GatekeeperLib.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,14 +17,37 @@ using System.Windows.Shapes;
 
 namespace Gatekeeper.Desktop.Pages
 {
-    /// <summary>
-    /// Interaction logic for VehiclesPage.xaml
-    /// </summary>
     public partial class VehiclesPage : Page
     {
-        public VehiclesPage()
+        private IDatabaseData _db;
+        private List<VehicleModel> vehicles;
+
+        public VehiclesPage(IDatabaseData db)
         {
             InitializeComponent();
+            _db = db;
+            LoadVehicles();
+        }
+
+        public void LoadVehicles()
+        {
+            vehicles = _db.LoadVehicles();
+            vehicleListView.ItemsSource = vehicles;
+        }
+
+        private void createVehicleButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void editVehicleButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void reloadButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
