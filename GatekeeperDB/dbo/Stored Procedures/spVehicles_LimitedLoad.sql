@@ -1,10 +1,10 @@
 ﻿CREATE PROCEDURE [dbo].[spVehicles_LimitedLoad]
-	@entriesCount INT
+	@vehicleCount INT
 AS
 BEGIN
 SET NOCOUNT ON;
 
-	SELECT TOP (@entriesCount) [Id], [LicensePlate]
+	SELECT TOP (@vehicleCount) [Id], [LicensePlate]
 	FROM dbo.Vehicles
 
 END

@@ -10,7 +10,7 @@ namespace Gatekeeper.Desktop.Windows
     {
         private IDatabaseData _db;
 
-        public event EventHandler EntryCreated;
+        public event EventHandler? EntryCreated;
         public CreatePersonEntryWindow(IDatabaseData db)
         {
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace Gatekeeper.Desktop.Windows
         {
             if(personsListView.SelectedItem != null)
             {
-                PersonModel selectedPerson = personsListView.SelectedItem as PersonModel;
+                PersonModel selectedPerson = (personsListView.SelectedItem as PersonModel)!;
                 _db.CreatePersonEntry(selectedPerson.Id, DateTime.Parse(entryDateTimeTextBox.Text));
                 EntryCreated?.Invoke(this, new EventArgs());
                 this.Close();

@@ -11,7 +11,7 @@ namespace Gatekeeper.Desktop
 {
     public partial class App : Application
     {
-        public static ServiceProvider serviceProvider;
+        public static ServiceProvider? serviceProvider;
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -30,6 +30,7 @@ namespace Gatekeeper.Desktop
             services.AddTransient<EditPersonWindow>();
             services.AddTransient<CreatePersonEntryWindow>();
             services.AddTransient<UpdatePersonEntryWindow>();
+            services.AddTransient<CreateVehicleWindow>();
 
             services.AddSingleton<HomePage>();                              
             services.AddTransient<ISqlDataAccess, SqlDataAccess>();
@@ -41,7 +42,7 @@ namespace Gatekeeper.Desktop
             IConfiguration config = builder.Build();
             services.AddSingleton(config);
 
-            string dbChoice = config.GetValue<string>("DatabaseChoice").ToLower();
+            string dbChoice = config.GetValue<string>("DatabaseChoice")!.ToLower();
 
             if(dbChoice == "sqldb")
             {
@@ -56,7 +57,7 @@ namespace Gatekeeper.Desktop
             serviceProvider = services.BuildServiceProvider();
             var mainWindow = serviceProvider.GetService<MainWindow>();
 
-            mainWindow.Show();
+            mainWindow!.Show();
         }
 
     }

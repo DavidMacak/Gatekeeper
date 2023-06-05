@@ -21,7 +21,7 @@ namespace GatekeeperLib.Databases
 
         public List<T> LoadData<T, U>(string sqlStatement, U parameters, string connectionStringName, bool isStoredProcedure = false)
         {
-            string connectionString = _config.GetConnectionString(connectionStringName);
+            string connectionString = _config.GetConnectionString(connectionStringName)!;
             // Defaultně nastaví command type na text (command je sql příkaz)
             CommandType commandType = CommandType.Text;
 
@@ -40,7 +40,7 @@ namespace GatekeeperLib.Databases
 
         public void SaveData<T>(string sqlStatement, T parameters, string connectionStringName, bool isStoredProcedure = false)
         {
-            string connectionString = _config.GetConnectionString(connectionStringName);
+            string connectionString = _config.GetConnectionString(connectionStringName)!;
             CommandType commandType = CommandType.Text;
 
             if (isStoredProcedure == true)

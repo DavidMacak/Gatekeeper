@@ -12,7 +12,7 @@ namespace Gatekeeper.Desktop.Pages
     public partial class PersonsPage : Page
     {
         private IDatabaseData _db;
-        private List<PersonModel> persons;
+        private List<PersonModel>? persons;
 
         public PersonsPage(IDatabaseData db)
         {
@@ -29,9 +29,9 @@ namespace Gatekeeper.Desktop.Pages
 
         private void createPersonButton_Click(object sender, RoutedEventArgs e)
         {
-            var createPersonWindow = App.serviceProvider.GetService<CreatePersonWindow>();
+            var createPersonWindow = App.serviceProvider!.GetService<CreatePersonWindow>();
 
-            createPersonWindow.PersonCreated += OnPropertyChanged;
+            createPersonWindow!.PersonCreated += OnPropertyChanged;
             createPersonWindow.Owner = Application.Current.MainWindow;
             createPersonWindow.ShowDialog();
             createPersonWindow.PersonCreated -= OnPropertyChanged;
@@ -49,13 +49,13 @@ namespace Gatekeeper.Desktop.Pages
 
         private void editPersonButton_Click(object sender, RoutedEventArgs e)
         {
-            var editPersonWindow = App.serviceProvider.GetService<EditPersonWindow>();
-            editPersonWindow.Owner = Application.Current.MainWindow;
+            var editPersonWindow = App.serviceProvider!.GetService<EditPersonWindow>();
+            editPersonWindow!.Owner = Application.Current.MainWindow;
             editPersonWindow.PersonEdited += OnPropertyChanged;
 
             if(personsListView.SelectedItem != null)
             {
-                PersonModel selectedPerson = personsListView.SelectedItem as PersonModel;
+                PersonModel selectedPerson = (personsListView.SelectedItem as PersonModel)!;
                 editPersonWindow.PopulateEditPersonWindow(selectedPerson);
                 editPersonWindow.ShowDialog();
             }

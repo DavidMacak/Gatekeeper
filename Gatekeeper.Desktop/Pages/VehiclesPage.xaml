@@ -30,7 +30,7 @@
             <ListView.View>
                 <GridView AllowsColumnReorder="False">
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id" Width="80"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=PlateNumber}" Header="SPZ" Width="160"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=LicensePlate}" Header="SPZ" Width="160"/>
                 </GridView>
             </ListView.View>
         </ListView>

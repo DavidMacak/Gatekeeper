@@ -1,5 +1,7 @@
-﻿using GatekeeperLib.Data;
+﻿using Gatekeeper.Desktop.Windows;
+using GatekeeperLib.Data;
 using GatekeeperLib.Models;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +22,7 @@ namespace Gatekeeper.Desktop.Pages
     public partial class VehiclesPage : Page
     {
         private IDatabaseData _db;
-        private List<VehicleModel> vehicles;
+        private List<VehicleModel>? vehicles;
 
         public VehiclesPage(IDatabaseData db)
         {
@@ -37,7 +39,17 @@ namespace Gatekeeper.Desktop.Pages
 
         private void createVehicleButton_Click(object sender, RoutedEventArgs e)
         {
+            var createVehicleWindow = App.serviceProvider!.GetService<CreateVehicleWindow>();
 
+            createVehicleWindow!.VehicleCreated += OnPropertyChanged;       // ! dává vědět kompileru že není null
+            createVehicleWindow.Owner = App.Current.MainWindow;
+            createVehicleWindow.ShowDialog();
+            createVehicleWindow.VehicleCreated -= OnPropertyChanged;
+        }
+
+        private void OnPropertyChanged(object? sender, EventArgs e)
+        {
+            LoadVehicles();
         }
 
         private void editVehicleButton_Click(object sender, RoutedEventArgs e)
@@ -47,7 +59,7 @@ namespace Gatekeeper.Desktop.Pages
 
         private void reloadButton_Click(object sender, RoutedEventArgs e)
         {
-
+            LoadVehicles();
         }
     }
 }
