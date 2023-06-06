@@ -1,0 +1,28 @@
+﻿<Window x:Class="Gatekeeper.Desktop.Windows.EditVehicleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gatekeeper.Desktop.Windows"
+        mc:Ignorable="d" FontSize="16" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
+        Title="EditVehicleWindow" SizeToContent="WidthAndHeight">
+    <Grid Margin="10">
+        <StackPanel Orientation="Vertical" >
+            <StackPanel Margin="0 0 0 5" Orientation="Horizontal">
+                <TextBlock Width="70">Původní:</TextBlock>
+                <TextBlock x:Name="originalLicensePlate" Text="{Binding LicensePlate}"/>
+            </StackPanel>
+            <StackPanel Margin="0 0 0 5" Orientation="Horizontal">
+                <TextBlock Width="70">Nová:</TextBlock>
+                <TextBox x:Name="licensePlateTextBox" Width="175"></TextBox>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button x:Name="saveVehicleButton" Width="80" Click="saveVehicleButton_Click">Uložit</Button>
+            </StackPanel>
+
+        </StackPanel>
+
+    </Grid>
+
+
+</Window>

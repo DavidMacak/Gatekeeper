@@ -54,7 +54,16 @@ namespace Gatekeeper.Desktop.Pages
 
         private void editVehicleButton_Click(object sender, RoutedEventArgs e)
         {
+            if(vehicleListView.SelectedItem != null)
+            {
+                var editVehicleWindow = App.serviceProvider!.GetService<EditVehicleWindow>();
 
+                editVehicleWindow.PopulateEditVehicleWindow(vehicleListView.SelectedItem as VehicleModel);
+                editVehicleWindow.VehicleEdited += OnPropertyChanged;
+                editVehicleWindow.Owner = App.Current.MainWindow;
+                editVehicleWindow.ShowDialog();
+                editVehicleWindow.VehicleEdited -= OnPropertyChanged;
+            }
         }
 
         private void reloadButton_Click(object sender, RoutedEventArgs e)

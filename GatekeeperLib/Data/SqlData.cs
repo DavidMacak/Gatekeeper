@@ -22,6 +22,7 @@ namespace GatekeeperLib.Data
             _db = db;
         }
 
+
         public List<PersonModel> LoadPersons(int personsCount = 50)
         {
             List<PersonModel> persons = _db.LoadData<PersonModel, dynamic>("dbo.spPersons_LimitedLoad", new { personsCount }, connectionStringName, true);
@@ -57,6 +58,7 @@ namespace GatekeeperLib.Data
             _db.SaveData("dbo.spPersonEntries_UpdateExitTime", new { entryId, exitTime }, connectionStringName, true);
         }
 
+
         public List<VehicleModel> LoadVehicles(int vehicleCount = 50)
         {
             List<VehicleModel> vehicles = _db.LoadData<VehicleModel, dynamic>("dbo.spVehicles_LimitedLoad", new { vehicleCount }, connectionStringName, true);
@@ -70,6 +72,10 @@ namespace GatekeeperLib.Data
         public void CreateVehicle(string licensePlate)
         {
             _db.SaveData("dbo.spVehicles_Create", new { licensePlate }, connectionStringName, true);
+        }
+        public void EditVehicle(int vehicleId, string licensePlate)
+        {
+            _db.SaveData("dbo.spVehicles_Edit", new { vehicleId, licensePlate }, connectionStringName, true);
         }
         public void CreateVehicleEntry(int vehicleId, int personId, DateTime entryTime)
         {

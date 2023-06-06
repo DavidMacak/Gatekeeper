@@ -6,9 +6,10 @@ namespace GatekeeperLib.Data
     {
         void CreatePerson(string firstName, string lastName);
         void CreatePersonEntry(int personId, DateTime entryTime);
-        void CreateVehicle(string plateNumber);
+        void CreateVehicle(string licensePlate);
         void CreateVehicleEntry(int vehicleId, int personId, DateTime entryTime);
         void EditPerson(int id, string firstName, string lastName);
+        void EditVehicle(int vehicleId, string licensePlate);
         List<PersonModel> FindPersons(string lastName);
         List<PersonEntriesFullModel> LoadPersonEntries(int entriesCount = 50);
         List<PersonModel> LoadPersons(int personsCount = 50);
