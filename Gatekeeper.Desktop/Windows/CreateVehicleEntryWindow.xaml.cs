@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GatekeeperLib.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +15,17 @@ using System.Windows.Shapes;
 
 namespace Gatekeeper.Desktop.Windows
 {
-    /// <summary>
-    /// Interaction logic for CreateVehicleEntryWindow.xaml
-    /// </summary>
+    
+
     public partial class CreateVehicleEntryWindow : Window
     {
-        public CreateVehicleEntryWindow()
+        private IDatabaseData _db;
+        public event EventHandler EntryCreated;
+
+        public CreateVehicleEntryWindow(IDatabaseData db)
         {
             InitializeComponent();
+            _db = db;
         }
     }
 }

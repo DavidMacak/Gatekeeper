@@ -4,9 +4,53 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gatekeeper.Desktop.Windows"
-        mc:Ignorable="d"
-        Title="CreateVehicleEntryWindow" Height="450" Width="800">
+        mc:Ignorable="d" FontSize="16"
+        Title="CreateVehicleEntryWindow" SizeToContent="WidthAndHeight">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" Margin="10">
+            <StackPanel>
+                <TextBlock>Vozidlo</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>SPZ:</TextBlock>
+                    <TextBox Width="150"></TextBox>
+                    <Button>Najít</Button>
+                </StackPanel>
+                <ListView Height="100">
+
+                </ListView>
+                <Button>Vytvořit nové vozidlo</Button>
+
+            </StackPanel>
+        </Grid>
         
+        <Grid Grid.Row="0" Grid.Column="1" Margin="10">
+            <StackPanel>
+                <TextBlock>Osoba</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>Příjmení:</TextBlock>
+                    <TextBox Width="150"></TextBox>
+                    <Button>Najít</Button>
+                </StackPanel>
+                <ListView Height="100">
+
+                </ListView>
+                <Button>Vytvořit novou osobu</Button>
+
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Button HorizontalAlignment="Right" Margin="0 0 10 10" Width="80">Vytvořit</Button>
+        </Grid>
+
     </Grid>
 </Window>
