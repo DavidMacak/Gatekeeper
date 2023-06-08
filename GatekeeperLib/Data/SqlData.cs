@@ -66,7 +66,7 @@ namespace GatekeeperLib.Data
         }
         public List<VehicleEntriesFullModel> LoadVehicleEntries(int vehicleCount = 50)
         {
-            List<VehicleEntriesFullModel> vehicleEntries = _db.LoadData<VehicleEntriesFullModel, dynamic>("spo.spVehicleEntries_LimitedLoad", new { vehicleCount }, connectionStringName, true);
+            List<VehicleEntriesFullModel> vehicleEntries = _db.LoadData<VehicleEntriesFullModel, dynamic>("dbo.spVehicleEntries_LimitedLoad", new { vehicleCount }, connectionStringName, true);
             return vehicleEntries;
         }
         public void CreateVehicle(string licensePlate)
@@ -76,6 +76,11 @@ namespace GatekeeperLib.Data
         public void EditVehicle(int vehicleId, string licensePlate)
         {
             _db.SaveData("dbo.spVehicles_Edit", new { vehicleId, licensePlate }, connectionStringName, true);
+        }
+        public List<VehicleModel> FindVehicle(string licensePlate)
+        {
+            List<VehicleModel> vehicles = _db.LoadData<VehicleModel, dynamic>("dbo.spVehicles_FindByLicensePlate", new {licensePlate}, connectionStringName, true);
+            return vehicles;
         }
         public void CreateVehicleEntry(int vehicleId, int personId, DateTime entryTime)
         {

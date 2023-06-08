@@ -15,6 +15,7 @@ namespace GatekeeperLib.Data
         List<PersonModel> LoadPersons(int personsCount = 50);
         List<VehicleEntriesFullModel> LoadVehicleEntries(int vehicleCount = 50);
         List<VehicleModel> LoadVehicles(int vehicleCount = 50);
+        public List<VehicleModel> FindVehicle(string licensePlate);
         void UpdatePersonExitTime(int entryId, DateTime exitTime);
         void UpdateVehicleExit(int entryId, DateTime exitTime);
     }

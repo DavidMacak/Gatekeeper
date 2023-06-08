@@ -19,21 +19,22 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
-            <Button x:Name="createVehicleEntryButton" Margin="5" Padding="10 5">Vytvořit průchod vozidla</Button>
-            <Button x:Name="editVehicleEntryButton" Margin="5" Padding="10 5">Upravit průchod</Button>
+            <Button x:Name="createVehicleEntryButton" Margin="5" Padding="10 5" Click="createVehicleEntryButton_Click">Vytvořit průchod vozidla</Button>
+            <Button x:Name="editVehicleEntryButton" Margin="5" Padding="10 5" Click="editVehicleEntryButton_Click">Upravit průchod</Button>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="right" Grid.Column="1" Grid.Row="0">
-            <Button x:Name="reloadButton" Margin="5" Padding="10 5">Aktualizovat</Button>
+            <Button x:Name="reloadButton" Margin="5" Padding="10 5" Click="reloadButton_Click">Aktualizovat</Button>
         </StackPanel>
 
         <ListView Grid.Column="0" Grid.Row="1" x:Name="vehicleEntriesListView" ItemsSource="{Binding Source=VehicleEntriesFullModel}">
             <ListView.View>
                 <GridView AllowsColumnReorder="True">
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id" Width="40"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=PlateNumber}" Header="SPZ" Width="100"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Fullname}" Header="Řidič" Width="150"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=EnterTime}" Header="Čas příchodu" Width="150"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=ExitTime}" Header="Čas odchodu" Width="150"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=LicensePlate}" Header="SPZ" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=FirstName}" Header="Jméno" Width="150"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=LastName}" Header="Příjmení" Width="150"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=EnterTime, StringFormat={}{0:dd.MM.yyyy HH:mm:ss}}" Header="Čas příchodu" Width="150"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=ExitTime, StringFormat={}{0:dd.MM.yyyy HH:mm:ss}, TargetNullValue=''}"  Header="Čas odchodu" Width="150"/>
                 </GridView>
             </ListView.View>
         </ListView>

@@ -4,53 +4,71 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gatekeeper.Desktop.Windows"
-        mc:Ignorable="d" FontSize="16"
+        mc:Ignorable="d" FontSize="16" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
         Title="CreateVehicleEntryWindow" SizeToContent="WidthAndHeight">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Grid.Column="0" Margin="10">
             <StackPanel>
-                <TextBlock>Vozidlo</TextBlock>
+                <TextBlock FontWeight="Bold">Vozidlo</TextBlock>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock>SPZ:</TextBlock>
-                    <TextBox Width="150"></TextBox>
-                    <Button>Najít</Button>
+                    <TextBlock Width="70">SPZ:</TextBlock>
+                    <TextBox x:Name="licensePlateTextBox" Width="150"></TextBox>
+                    <Button x:Name="findByLicensePlateButton" Width="50" Click="findByLicensePlateButton_Click">Najít</Button>
                 </StackPanel>
-                <ListView Height="100">
-
+                <ListView x:Name="vehicleListView" SelectionMode="Single" Height="100" ItemsSource="{Binding Source=VehicleModel}">
+                    <ListView.View>
+                        <GridView AllowsColumnReorder="True">
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id" Width="40"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=LicensePlate}" Header="SPZ" Width="150"/>
+                        </GridView>
+                    </ListView.View>
                 </ListView>
-                <Button>Vytvořit nové vozidlo</Button>
+                <Button x:Name="createNewVehicleButton" Click="createNewVehicleButton_Click">Vytvořit nové vozidlo</Button>
 
             </StackPanel>
         </Grid>
         
         <Grid Grid.Row="0" Grid.Column="1" Margin="10">
             <StackPanel>
-                <TextBlock>Osoba</TextBlock>
+                <TextBlock FontWeight="Bold">Osoba</TextBlock>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock>Příjmení:</TextBlock>
-                    <TextBox Width="150"></TextBox>
-                    <Button>Najít</Button>
+                    <TextBlock Width="70">Příjmení:</TextBlock>
+                    <TextBox x:Name="lastNameTextBox"  Width="150"></TextBox>
+                    <Button x:Name="findByLastNameButton"  Width="50" Click="findByLastNameButton_Click">Najít</Button>
                 </StackPanel>
-                <ListView Height="100">
-
+                <ListView x:Name="personListView" SelectionMode="Single" Height="100" ItemsSource="{Binding Source=PersonModel}" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <ListView.View>
+                        <GridView AllowsColumnReorder="True">
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id" Width="40"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=FirstName}" Header="Jméno" Width="150"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=LastName}" Header="Příjmení" Width="150"/>
+                        </GridView>
+                    </ListView.View>
                 </ListView>
-                <Button>Vytvořit novou osobu</Button>
+                <Button x:Name="createNewPersonButton" Click="createNewPersonButton_Click">Vytvořit novou osobu</Button>
 
             </StackPanel>
         </Grid>
 
         <Grid Grid.Row="1" Grid.ColumnSpan="2">
-            <Button HorizontalAlignment="Right" Margin="0 0 10 10" Width="80">Vytvořit</Button>
+            <StackPanel Orientation="Horizontal"  VerticalAlignment="Top">
+                <TextBlock Width="100">Datum a čas:</TextBlock>
+                <TextBox x:Name="dateTimeTextBox" Width="200" ></TextBox>
+                <Button x:Name="timeNowButton" Width="40" Click="timeNowButton_Click">Teď</Button>
+            </StackPanel>
         </Grid>
+
+        <Button Grid.Column="1" Grid.Row="1" x:Name="createEntryButton" HorizontalAlignment="Right" Margin="0 0 5 5" Width="80" Click="createEntryButton_Click">Vytvořit</Button>
+
 
     </Grid>
 </Window>
