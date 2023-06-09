@@ -47,24 +47,32 @@ namespace Gatekeeper.Desktop.Windows
         private void LoadVehicles()
         {
             if (licensePlateTextBox.Text.Length > 0)
+            {
                 _vehicles = _db.FindVehicle(licensePlateTextBox.Text);
+            }
+            else
+            {
+                _vehicles = _db.LoadVehicles();
+            }
 
             vehicleListView.ItemsSource = _vehicles;
 
-            if (vehicleListView.Items.Count > 0)
-                vehicleListView.SelectedIndex = 0;
         }
 
         private void LoadPersons()
         {
 
             if (lastNameTextBox.Text.Length > 0)
+            {
                 _persons = _db.FindPersons(lastNameTextBox.Text);
+            }
+            else
+            {
+                _persons = _db.LoadPersons();
+            }
 
             personListView.ItemsSource = _persons;
 
-            if (personListView.Items.Count > 0)
-                personListView.SelectedIndex = 0;
         }
 
         private void findByLicensePlateButton_Click(object sender, RoutedEventArgs e)
@@ -85,7 +93,14 @@ namespace Gatekeeper.Desktop.Windows
 
         private void OnVehicleCreated(object? sender, EventArgs e)
         {
+            if(sender != null)
+            {
+                licensePlateTextBox.Text = (sender as CreateVehicleWindow)!.licensePlateTextBox.Text;
+            }
             LoadVehicles();
+
+            if (vehicleListView.Items.Count > 0)
+                vehicleListView.SelectedIndex = 0;
         }
 
         private void findByLastNameButton_Click(object sender, RoutedEventArgs e)
@@ -107,7 +122,14 @@ namespace Gatekeeper.Desktop.Windows
 
         private void OnPersonCreated(object? sender, EventArgs e)
         {
+            if(sender != null)
+            {
+                lastNameTextBox.Text = (sender as CreatePersonWindow)!.lastNameTextBox.Text;
+            }
             LoadPersons();
+
+            if (personListView.Items.Count > 0)
+                personListView.SelectedIndex = 0;
         }
 
         private void createEntryButton_Click(object sender, RoutedEventArgs e)
