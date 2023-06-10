@@ -4,9 +4,50 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gatekeeper.Desktop.Windows"
-        mc:Ignorable="d"
-        Title="UpdateVehicleEntryWindow" Height="450" Width="800">
-    <Grid>
-        
+        mc:Ignorable="d" FontSize="16" WindowStartupLocation="CenterOwner" SizeToContent="WidthAndHeight"
+        Title="UpdateVehicleEntryWindow" >
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical">
+            
+            <TextBlock Margin="5" x:Name="licensePlateTextBlock">
+                <TextBlock.Text>
+                    <Binding StringFormat="SPZ: {0}" Path="LicensePlate" />
+                </TextBlock.Text>
+            </TextBlock>
+            
+            <TextBlock Margin="5" x:Name="fullNameTextBlock">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="Řidič: {0} {1}">
+                        <Binding Path="FirstName"/>
+                        <Binding Path="LastName"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+
+            <TextBlock Margin="5" x:Name="entryTimeTextBlock">
+                <TextBlock.Text>
+                    <Binding StringFormat="Příjezd: {0:d.M.yyyy HH:mm:ss}" Path="EnterTime" />
+                </TextBlock.Text>
+            </TextBlock>
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock>Odjezd:</TextBlock>
+                <TextBox x:Name="exitTimeTextBox" Width="150"></TextBox>
+                <Button x:Name="timeNowButton" Width="60" Click="timeNowButton_Click">Teď</Button>
+            </StackPanel>
+            <Button x:Name="saveButton" Width="80" HorizontalAlignment="Right" Margin="5" Click="saveButton_Click">Ok</Button>
+        </StackPanel>
+
     </Grid>
 </Window>

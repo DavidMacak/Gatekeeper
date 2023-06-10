@@ -36,6 +36,14 @@ namespace Gatekeeper.Desktop.Pages
             _vehicleEntries = _db.LoadVehicleEntries();
             vehicleEntriesListView.ItemsSource = _vehicleEntries;
         }
+        private void OnPropertyChanged(object? sender, EventArgs e)
+        {
+            LoadEntries();
+        }
+        private void reloadButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoadEntries();
+        }
 
         private void createVehicleEntryButton_Click(object sender, RoutedEventArgs e)
         {
@@ -47,19 +55,22 @@ namespace Gatekeeper.Desktop.Pages
 
         }
 
-        private void OnPropertyChanged(object? sender, EventArgs e)
+        private void addVehicleEntryButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadEntries();
-        }
+            if(vehicleEntriesListView.SelectedItem != null)
+            {
+                var updateVehicleEntryWindow = App.serviceProvider.GetService<UpdateVehicleEntryWindow>();
+                updateVehicleEntryWindow.Owner = App.Current.MainWindow;
+                updateVehicleEntryWindow.EntryUpdated += OnPropertyChanged;
+                updateVehicleEntryWindow.PopulateWindow(vehicleEntriesListView.SelectedItem as VehicleEntriesFullModel);
+                updateVehicleEntryWindow.ShowDialog();
+                updateVehicleEntryWindow.EntryUpdated -= OnPropertyChanged;
 
+            }
+        }
         private void editVehicleEntryButton_Click(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void reloadButton_Click(object sender, RoutedEventArgs e)
-        {
-            LoadEntries();
         }
     }
 }

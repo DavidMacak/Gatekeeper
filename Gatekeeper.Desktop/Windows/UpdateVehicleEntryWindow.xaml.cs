@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GatekeeperLib.Data;
+using GatekeeperLib.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,44 @@ namespace Gatekeeper.Desktop.Windows
     /// </summary>
     public partial class UpdateVehicleEntryWindow : Window
     {
-        public UpdateVehicleEntryWindow()
+        private IDatabaseData _db;
+
+        public event EventHandler EntryUpdated;
+        private VehicleEntriesFullModel _entry;
+
+        public UpdateVehicleEntryWindow(IDatabaseData db)
         {
+            _db = db;
             InitializeComponent();
+        }
+
+        public void PopulateWindow(VehicleEntriesFullModel entry)
+        {
+            _entry = entry;
+            licensePlateTextBlock.DataContext = _entry;
+            fullNameTextBlock.DataContext = _entry;
+            entryTimeTextBlock.DataContext = _entry;
+        }
+
+        private void timeNowButton_Click(object sender, RoutedEventArgs e)
+        {
+            exitTimeTextBox.Text = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
+        }
+
+        private void saveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(exitTimeTextBox.Text != null)
+            {
+                DateTime time;
+
+                if (DateTime.TryParse(exitTimeTextBox.Text, out time))
+                {
+                    _db.UpdateVehicleExit(_entry.Id, time);
+
+                    EntryUpdated?.Invoke(this, EventArgs.Empty);
+                    this.Close();
+                }
+            }
         }
     }
 }

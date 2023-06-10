@@ -21,6 +21,7 @@
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
             <Button x:Name="createVehicleEntryButton" Margin="5" Padding="10 5" Click="createVehicleEntryButton_Click">Vytvořit průchod vozidla</Button>
             <Button x:Name="editVehicleEntryButton" Margin="5" Padding="10 5" Click="editVehicleEntryButton_Click">Upravit průchod</Button>
+            <Button x:Name="addVehicleEntryButton" Margin="5" Padding="10 5" Click="addVehicleEntryButton_Click">Přidat odchod</Button>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="right" Grid.Column="1" Grid.Row="0">
             <Button x:Name="reloadButton" Margin="5" Padding="10 5" Click="reloadButton_Click">Aktualizovat</Button>
