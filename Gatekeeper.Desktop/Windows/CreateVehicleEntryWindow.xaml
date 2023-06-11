@@ -16,8 +16,11 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Grid.Column="0" Margin="10">
-            <StackPanel>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Frame x:Name="vehicleFrame" NavigationUIVisibility="Hidden">
+                
+            </Frame>
+            <!--<StackPanel>
                 <TextBlock FontWeight="Bold">Vozidlo</TextBlock>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Width="70">SPZ:</TextBlock>
@@ -34,11 +37,14 @@
                 </ListView>
                 <Button x:Name="createNewVehicleButton" Click="createNewVehicleButton_Click">Vytvořit nové vozidlo</Button>
 
-            </StackPanel>
+            </StackPanel>-->
         </Grid>
         
-        <Grid Grid.Row="0" Grid.Column="1" Margin="10">
-            <StackPanel>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Frame x:Name="personFrame" NavigationUIVisibility="Hidden">
+                
+            </Frame>
+            <!--<StackPanel>
                 <TextBlock FontWeight="Bold">Osoba</TextBlock>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Width="70">Příjmení:</TextBlock>
@@ -56,7 +62,7 @@
                 </ListView>
                 <Button x:Name="createNewPersonButton" Click="createNewPersonButton_Click">Vytvořit novou osobu</Button>
 
-            </StackPanel>
+            </StackPanel>-->
         </Grid>
 
         <Grid Grid.Row="1" Grid.ColumnSpan="2">

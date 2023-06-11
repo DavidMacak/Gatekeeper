@@ -70,7 +70,15 @@ namespace Gatekeeper.Desktop.Pages
         }
         private void editVehicleEntryButton_Click(object sender, RoutedEventArgs e)
         {
+            if (vehicleEntriesListView.SelectedItem != null)
+            {
+                var editVehicleEntryWindow = App.serviceProvider.GetService<EditVehicleEntryWindow>();
+                editVehicleEntryWindow.Owner = App.Current.MainWindow;
+                editVehicleEntryWindow.EntryEdited += OnPropertyChanged;
+                editVehicleEntryWindow.ShowDialog();
+                editVehicleEntryWindow.EntryEdited -= OnPropertyChanged;
 
+            }
         }
     }
 }

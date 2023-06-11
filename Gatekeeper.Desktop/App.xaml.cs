@@ -27,6 +27,11 @@ namespace Gatekeeper.Desktop
             services.AddSingleton<VehiclesPage>();
             services.AddSingleton<VehicleEntriesPage>();
 
+            services.AddTransient<FindOrCreatePersonPage>();
+            services.AddTransient<FindOrCreateVehiclePage>();
+
+            //services.AddTransient<DialogWithFrameAndButton>();
+
             services.AddTransient<CreatePersonWindow>();
             services.AddTransient<EditPersonWindow>();
             services.AddTransient<CreatePersonEntryWindow>();
@@ -36,6 +41,7 @@ namespace Gatekeeper.Desktop
             services.AddTransient<EditVehicleWindow>();
             services.AddTransient<UpdateVehicleEntryWindow>();
             services.AddTransient<CreateVehicleEntryWindow>();
+            services.AddTransient<EditVehicleEntryWindow>();
 
 
             services.AddSingleton<HomePage>();                              

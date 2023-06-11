@@ -1,0 +1,30 @@
+﻿<Page x:Class="Gatekeeper.Desktop.Pages.FindOrCreateVehiclePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Gatekeeper.Desktop.Pages"
+      mc:Ignorable="d"  Background="white" FontSize="16"
+      Title="FindOrCreateVehiclePage">
+
+    <Grid Margin="10">
+        <StackPanel>
+            <TextBlock FontWeight="Bold">Vozidlo</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="70">SPZ:</TextBlock>
+                <TextBox x:Name="licensePlateTextBox" Width="150"></TextBox>
+                <Button x:Name="findByLicensePlateButton" Width="50" Click="findByLicensePlateButton_Click">Najít</Button>
+            </StackPanel>
+            <ListView x:Name="vehicleListView" SelectionMode="Single" Height="200" Width="400" ItemsSource="{Binding Source=VehicleModel}">
+                <ListView.View>
+                    <GridView AllowsColumnReorder="True">
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id" Width="80"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=LicensePlate}" Header="SPZ" Width="150"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button x:Name="createNewVehicleButton" Click="createNewVehicleButton_Click">Vytvořit nové vozidlo</Button>
+
+        </StackPanel>
+    </Grid>
+</Page>
