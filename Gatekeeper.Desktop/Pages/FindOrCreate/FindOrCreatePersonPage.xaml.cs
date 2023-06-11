@@ -24,6 +24,16 @@ namespace Gatekeeper.Desktop.Pages
         private IDatabaseData _db;
         private List<PersonModel> _persons;
         private string _lastname;
+        public object SelectedItem { get; set; }
+
+        public object GetSelectedItem()
+        {
+            if(personListView.SelectedItems != null)
+            {
+                SelectedItem = personListView.SelectedItem as PersonModel;
+            }
+            return SelectedItem;
+        }
 
         public FindOrCreatePersonPage(IDatabaseData db)
         {

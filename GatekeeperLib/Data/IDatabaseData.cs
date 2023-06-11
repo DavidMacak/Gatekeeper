@@ -18,6 +18,7 @@ namespace GatekeeperLib.Data
         public List<VehicleModel> FindVehicle(string licensePlate);
         void UpdatePersonExitTime(int entryId, DateTime exitTime);
         void UpdateVehicleExit(int entryId, DateTime exitTime);
+        public void EditVehicleEntry(int entryId, int personId, int vehicleId, DateTime entryTime);
         public void EditVehicleEntry(int entryId, int personId, int vehicleId, DateTime entryTime, DateTime exitTime);
     }
 }

@@ -16,5 +16,18 @@ namespace GatekeeperLib.Models
         public string LastName { get; set; } = string.Empty;
         public DateTime EnterTime { get; set; }
         public DateTime? ExitTime { get; set; }
+
+        public void ChangePerson(PersonModel person)
+        {
+            PersonId = person.Id;
+            FirstName = person.FirstName;
+            LastName = person.LastName;
+        }
+
+        public void ChangeVehicle(VehicleModel vehicle)
+        {
+            VehicleId = vehicle.Id;
+            LicensePlate = vehicle.LicensePlate;
+        }
     }
 }

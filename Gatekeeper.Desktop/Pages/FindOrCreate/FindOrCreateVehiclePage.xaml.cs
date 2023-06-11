@@ -19,16 +19,25 @@ using System.Windows.Shapes;
 
 namespace Gatekeeper.Desktop.Pages
 {
-    public partial class FindOrCreateVehiclePage : Page
+    public partial class FindOrCreateVehiclePage : Page, IFindOrCreatePage
     {
         private IDatabaseData _db;
         private List<VehicleModel> _vehicles;
         private string _licensePlate;
+        public object SelectedItem { get; set; }
 
         public FindOrCreateVehiclePage(IDatabaseData db)
         {
             _db = db;
             InitializeComponent();
+        }
+        public object GetSelectedItem()
+        {
+            if (vehicleListView.SelectedItems != null)
+            {
+                SelectedItem = vehicleListView.SelectedItem as VehicleModel;
+            }
+            return SelectedItem;
         }
         private void LoadVehicles()
         {

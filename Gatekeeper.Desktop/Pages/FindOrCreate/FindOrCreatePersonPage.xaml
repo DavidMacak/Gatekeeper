@@ -15,7 +15,9 @@
                 <TextBox x:Name="lastNameTextBox"  Width="150"></TextBox>
                 <Button x:Name="findByLastNameButton"  Width="50" Click="findByLastNameButton_Click">Najít</Button>
             </StackPanel>
-            <ListView x:Name="personListView" SelectionMode="Single" Height="200" Width="400" ItemsSource="{Binding Source=PersonModel}" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListView x:Name="personListView" SelectionMode="Single"
+                      Height="200" Width="400" ItemsSource="{Binding Source=PersonModel}" 
+                      ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <ListView.View>
                     <GridView AllowsColumnReorder="True">
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Header="Id" Width="80"/>

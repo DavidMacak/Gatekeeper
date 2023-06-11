@@ -84,6 +84,8 @@
     <Build Include="dbo\Stored Procedures\spVehicleEntries_LimitedLoad.sql" />
     <Build Include="dbo\Stored Procedures\spVehicleEntries_Create.sql" />
     <Build Include="dbo\Stored Procedures\spVehicleEntries_UpdateExitTime.sql" />
+    <Build Include="dbo\Stored Procedures\spVehicleEntries_EditEntry.sql" />
+    <Build Include="dbo\Stored Procedures\spVehicleEntries_EditEntryWithoutExitTime.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish\GatekeeperDB.publish.xml" />

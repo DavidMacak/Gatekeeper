@@ -29,12 +29,12 @@
             <StackPanel Orientation="Horizontal" Margin="5">
                 <TextBlock Width="60">Řidič:</TextBlock>
                 <TextBlock Width="180" x:Name="fullNameTextBlock">
-                    <TextBlock.Text>
+                    <!--<TextBlock.Text>
                         <MultiBinding StringFormat="{}{0} {1}">
                             <Binding Path="FirstName"/>
                             <Binding Path="LastName"/>
                         </MultiBinding>
-                    </TextBlock.Text>
+                    </TextBlock.Text>-->
                 </TextBlock>
                 <Button x:Name="changePersonButton" Click="changePersonButton_Click" Width="60">Změnit</Button>
             </StackPanel>
@@ -42,12 +42,14 @@
             <StackPanel Orientation="Horizontal" Margin="5">
                 <TextBlock Width="60">Příjezd:</TextBlock>
                 <TextBox x:Name="entryTimeTextBox" Width="180"/>
+                <!--Text="{Binding Path=EnterTime, StringFormat={}{0:dd.MM.yyyy HH:mm:ss}}"-->
                 <Button x:Name="entryTimeNowButton" Width="60" Click="entryTimeNowButton_Click">Teď</Button>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5">
                 <TextBlock Width="60">Odjezd:</TextBlock>
-                <TextBox x:Name="exitTimeTextBox" Width="180"></TextBox>
+                <!--Text="{Binding Path=ExitTime, TargetNullValue='', StringFormat={}{0:dd.MM.yyyy HH:mm:ss}}"-->
+                <TextBox x:Name="exitTimeTextBox" Width="180"/>
                 <Button x:Name="exitTimeNowButton" Width="60" Click="exitTimeNowButton_Click">Teď</Button>
             </StackPanel>
             <Button x:Name="saveButton" Width="80" HorizontalAlignment="Right" Margin="5" Click="saveButton_Click">Ok</Button>

@@ -90,6 +90,10 @@ namespace GatekeeperLib.Data
         {
             _db.SaveData("dbo.spVehicleEntries_UpdateExitTime", new { entryId, exitTime }, connectionStringName, true);
         }
+        public void EditVehicleEntry(int entryId, int personId, int vehicleId, DateTime entryTime)
+        {
+            _db.SaveData("dbo.spVehicleEntries_EditEntryWithoutExitTime", new { entryId, personId, vehicleId, entryTime}, connectionStringName, true);
+        }
         public void EditVehicleEntry(int entryId, int personId, int vehicleId, DateTime entryTime, DateTime exitTime)
         {
             _db.SaveData("dbo.spVehicleEntries_EditEntry", new {entryId, personId, vehicleId, entryTime, exitTime}, connectionStringName, true);
