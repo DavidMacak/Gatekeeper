@@ -51,6 +51,7 @@ namespace Gatekeeper.Desktop.Windows
         private void changePersonButton_Click(object sender, RoutedEventArgs e)
         {
             var dialogWindow = new DialogWithFrameAndButton(typeof(PersonModel));
+            dialogWindow.Owner = this;
 
             dialogWindow.ValueEdited += DialogWindow_ChangeConfirmed;
             dialogWindow.ShowDialog();
@@ -76,6 +77,7 @@ namespace Gatekeeper.Desktop.Windows
         private void changeLicensePlateButton_Click(object sender, RoutedEventArgs e)
         {
             var dialogWindow = new DialogWithFrameAndButton(typeof(VehicleModel));
+            dialogWindow.Owner = this;
 
             dialogWindow.ValueEdited += DialogWindow_ChangeConfirmed;
             dialogWindow.ShowDialog();
