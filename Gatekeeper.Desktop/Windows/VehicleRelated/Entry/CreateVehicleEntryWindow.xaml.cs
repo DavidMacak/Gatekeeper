@@ -60,16 +60,19 @@ namespace Gatekeeper.Desktop.Windows
         {
             if (_vehiclePage.vehicleListView.SelectedItem != null && _personPage.personListView.SelectedItem != null && dateTimeTextBox.Text.Length > 0)
             {
-                DateTime time;
+                DateTime date;
 
-                if (DateTime.TryParse(dateTimeTextBox.Text, out time))
+                if (DateTime.TryParse(dateTimeTextBox.Text, out date))
                 {
-                    _db.CreateVehicleEntry((_vehiclePage.vehicleListView.SelectedItem as VehicleModel).Id,
-                                           (_personPage.personListView.SelectedItem as PersonModel).Id,
-                                           time);
+                    if(date <= DateTime.Now)
+                    {
+                        _db.CreateVehicleEntry((_vehiclePage.vehicleListView.SelectedItem as VehicleModel).Id,
+                                               (_personPage.personListView.SelectedItem as PersonModel).Id,
+                                               date);
 
-                    EntryCreated?.Invoke(this, EventArgs.Empty);
-                    this.Close();
+                        EntryCreated?.Invoke(this, EventArgs.Empty);
+                        this.Close();
+                    }
                 }
             }
 

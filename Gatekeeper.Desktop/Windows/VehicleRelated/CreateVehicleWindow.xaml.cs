@@ -31,9 +31,10 @@ namespace Gatekeeper.Desktop.Windows
 
         private void createVehicleButton_Click(object sender, RoutedEventArgs e)
         {
-            if(licensePlateTextBox.Text.Length > 0)
+            string licensePlate = licensePlateTextBox.Text;
+            if(licensePlate.Length > 0 && licensePlate.Length <= 10)
             {
-                _db.CreateVehicle(licensePlateTextBox.Text);
+                _db.CreateVehicle(licensePlate);
                 VehicleCreated?.Invoke(this, EventArgs.Empty);
                 this.Close();
             }

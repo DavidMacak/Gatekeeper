@@ -28,16 +28,30 @@ namespace Gatekeeper.Desktop.Windows
                 List<PersonModel> persons = _db.FindPersons(lastNameTextBox.Text);
                 personsListView.ItemsSource = persons;
             }
+            else
+            {
+                List<PersonModel> persons = _db.LoadPersons();
+                personsListView.ItemsSource = persons;
+            }
         }
 
         private void createEntryButton_Click(object sender, RoutedEventArgs e)
         {
             if(personsListView.SelectedItem != null)
             {
-                PersonModel selectedPerson = (personsListView.SelectedItem as PersonModel)!;
-                _db.CreatePersonEntry(selectedPerson.Id, DateTime.Parse(entryDateTimeTextBox.Text));
-                EntryCreated?.Invoke(this, new EventArgs());
-                this.Close();
+                DateTime date;
+
+                if(DateTime.TryParse(entryDateTimeTextBox.Text, out date))
+                {
+                    if(date <= DateTime.Now)
+                    {
+                        PersonModel selectedPerson = (personsListView.SelectedItem as PersonModel)!;
+                        _db.CreatePersonEntry(selectedPerson.Id, date);
+                        EntryCreated?.Invoke(this, new EventArgs());
+                        this.Close();
+
+                    }
+                }
             }
         }
     }

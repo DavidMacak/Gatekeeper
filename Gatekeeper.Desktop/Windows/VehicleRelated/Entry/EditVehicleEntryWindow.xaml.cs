@@ -103,9 +103,13 @@ namespace Gatekeeper.Desktop.Windows
 
                 if(DateTime.TryParse(entryTimeTextBox.Text, out enterTime) && DateTime.TryParse(exitTimeTextBox.Text, out exitTime))
                 {
-                    _db.EditVehicleEntry(_entryFullModel.Id, _entryFullModel.PersonId, _entryFullModel.VehicleId, enterTime, exitTime);
-                    EntryEdited?.Invoke(this, e);
-                    this.Close();
+                    if (enterTime < exitTime && enterTime <= DateTime.Now && exitTime <= DateTime.Now)
+                    {
+                        _db.EditVehicleEntry(_entryFullModel.Id, _entryFullModel.PersonId, _entryFullModel.VehicleId, enterTime, exitTime);
+                        EntryEdited?.Invoke(this, e);
+                        this.Close();
+                    }
+
                 }
             }
             else if(entryTimeTextBox.Text.Length > 0 && exitTimeTextBox.Text.Length == 0)
@@ -114,9 +118,12 @@ namespace Gatekeeper.Desktop.Windows
 
                 if (DateTime.TryParse(entryTimeTextBox.Text, out enterTime))
                 {
-                    _db.EditVehicleEntry(_entryFullModel.Id, _entryFullModel.PersonId, _entryFullModel.VehicleId, enterTime);
-                    EntryEdited?.Invoke(this, e);
-                    this.Close();
+                    if(enterTime <= DateTime.Now)
+                    {
+                        _db.EditVehicleEntry(_entryFullModel.Id, _entryFullModel.PersonId, _entryFullModel.VehicleId, enterTime);
+                        EntryEdited?.Invoke(this, e);
+                        this.Close();
+                    }
                 }
             }
         }

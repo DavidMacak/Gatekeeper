@@ -34,12 +34,16 @@ namespace Gatekeeper.Desktop.Windows
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            if(exitTimeTextBox.Text.Length > 0)
+            DateTime date;
+            if (DateTime.TryParse(exitTimeTextBox.Text, out date))
             {
-                _db.UpdatePersonExitTime(_entry.Id, DateTime.Parse(exitTimeTextBox.Text));
+                if (date < DateTime.Now)
+                {
+                    _db.UpdatePersonExitTime(_entry.Id, date);
 
-                ExitTimeSaved?.Invoke(this, EventArgs.Empty);
-                this.Close();
+                    ExitTimeSaved?.Invoke(this, EventArgs.Empty);
+                    this.Close();
+                }
             }
         }
     }

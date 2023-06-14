@@ -49,14 +49,18 @@ namespace Gatekeeper.Desktop.Windows
         {
             if(exitTimeTextBox.Text != null)
             {
-                DateTime time;
+                DateTime date;
 
-                if (DateTime.TryParse(exitTimeTextBox.Text, out time))
+                if (DateTime.TryParse(exitTimeTextBox.Text, out date))
                 {
-                    _db.UpdateVehicleExit(_entry.Id, time);
+                    if(date <= DateTime.Now)
+                    {
+                        _db.UpdateVehicleExit(_entry.Id, date);
 
-                    EntryUpdated?.Invoke(this, EventArgs.Empty);
-                    this.Close();
+                        EntryUpdated?.Invoke(this, EventArgs.Empty);
+                        this.Close();
+                    }
+
                 }
             }
         }

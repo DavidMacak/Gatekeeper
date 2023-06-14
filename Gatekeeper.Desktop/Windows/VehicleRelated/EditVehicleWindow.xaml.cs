@@ -41,9 +41,10 @@ namespace Gatekeeper.Desktop.Windows
 
         private void saveVehicleButton_Click(object sender, RoutedEventArgs e)
         {
-            if(licensePlateTextBox.Text.Length > 0)
+            string licensePlate = licensePlateTextBox.Text;
+            if (licensePlate.Length > 0 && licensePlate.Length <= 10)
             {
-                _db.EditVehicle(_vehicle.Id, licensePlateTextBox.Text);
+                _db.EditVehicle(_vehicle.Id, licensePlate);
                 VehicleEdited?.Invoke(this, EventArgs.Empty);
                 this.Close();
             }

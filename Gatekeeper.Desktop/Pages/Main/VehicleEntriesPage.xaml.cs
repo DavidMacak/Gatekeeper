@@ -49,13 +49,17 @@ namespace Gatekeeper.Desktop.Pages
         {
             if(vehicleEntriesListView.SelectedItem != null)
             {
-                var updateVehicleEntryWindow = App.serviceProvider.GetService<UpdateVehicleEntryWindow>();
-                updateVehicleEntryWindow.Owner = App.Current.MainWindow;
-                updateVehicleEntryWindow.EntryUpdated += OnPropertyChanged;
-                updateVehicleEntryWindow.PopulateWindow(vehicleEntriesListView.SelectedItem as VehicleEntriesFullModel);
-                updateVehicleEntryWindow.ShowDialog();
-                updateVehicleEntryWindow.EntryUpdated -= OnPropertyChanged;
+                VehicleEntriesFullModel entry = vehicleEntriesListView.SelectedItem as VehicleEntriesFullModel;
 
+                if(entry.ExitTime == null)
+                {
+                    var updateVehicleEntryWindow = App.serviceProvider.GetService<UpdateVehicleEntryWindow>();
+                    updateVehicleEntryWindow.Owner = App.Current.MainWindow;
+                    updateVehicleEntryWindow.EntryUpdated += OnPropertyChanged;
+                    updateVehicleEntryWindow.PopulateWindow(vehicleEntriesListView.SelectedItem as VehicleEntriesFullModel);
+                    updateVehicleEntryWindow.ShowDialog();
+                    updateVehicleEntryWindow.EntryUpdated -= OnPropertyChanged;
+                }
             }
         }
         private void editVehicleEntryButton_Click(object sender, RoutedEventArgs e)

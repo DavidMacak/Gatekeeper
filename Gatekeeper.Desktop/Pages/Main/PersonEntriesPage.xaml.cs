@@ -38,17 +38,22 @@ namespace Gatekeeper.Desktop.Pages
 
         private void editPersonEntryButton_Click(object sender, RoutedEventArgs e)
         {
-            var updatePersonEntryWindow = App.serviceProvider.GetService<UpdatePersonEntryWindow>();
-
             if(personEntriesListView.SelectedItem != null)
             {
-                updatePersonEntryWindow.PopulateWindow(personEntriesListView.SelectedItem as PersonEntriesFullModel);
-            }
+                PersonEntriesFullModel personEntry = (personEntriesListView.SelectedItem as PersonEntriesFullModel)!;
 
-            updatePersonEntryWindow.ExitTimeSaved += OnPropertyChanged;
-            updatePersonEntryWindow.Owner = Application.Current.MainWindow;
-            updatePersonEntryWindow.ShowDialog();
-            updatePersonEntryWindow.ExitTimeSaved -= OnPropertyChanged;
+                if(personEntry.ExitTime == null)
+                {
+                    var updatePersonEntryWindow = App.serviceProvider!.GetService<UpdatePersonEntryWindow>();
+
+                    updatePersonEntryWindow!.PopulateWindow((personEntriesListView.SelectedItem as PersonEntriesFullModel)!);
+
+                    updatePersonEntryWindow.ExitTimeSaved += OnPropertyChanged;
+                    updatePersonEntryWindow.Owner = Application.Current.MainWindow;
+                    updatePersonEntryWindow.ShowDialog();
+                    updatePersonEntryWindow.ExitTimeSaved -= OnPropertyChanged;
+                }
+            }
         }
 
         private void reloadButton_Click(object sender, RoutedEventArgs e)
