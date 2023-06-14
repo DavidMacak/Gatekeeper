@@ -1,4 +1,5 @@
 ﻿using Gatekeeper.Desktop.Pages;
+using GatekeeperLib;
 using GatekeeperLib.Data;
 using GatekeeperLib.Models;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,20 +24,31 @@ namespace Gatekeeper.Desktop.Windows
 
         private void createPersonButton_Click(object sender, RoutedEventArgs e)
         {
+            bool success = false;
             PersonModel person = new PersonModel();
-
-            if(firstNameTextBox.Text.Length > 0 && firstNameTextBox.Text.Length <= 50)
+            
+            if(firstNameTextBox.Text.IsPersonNameInCorrectFormat())
             {
-                person.FirstName = firstNameTextBox.Text;
-            }
-            if (lastNameTextBox.Text.Length > 0 && lastNameTextBox.Text.Length <= 50)
-            {
-                person.LastName = lastNameTextBox.Text;
+                person.FirstName = firstNameTextBox.Text.FirstLetterToCapital();
+                success = true;
             }
 
-            _db.CreatePerson(person.FirstName, person.LastName);
-            PersonCreated?.Invoke(this, EventArgs.Empty);
-            this.Close();
+            if (lastNameTextBox.Text.IsPersonNameInCorrectFormat())
+            {
+                person.LastName = lastNameTextBox.Text.FirstLetterToCapital();
+                success = true;
+            }
+            else 
+            { 
+                success = false;
+            }
+
+            if (success)
+            {
+                _db.CreatePerson(person.FirstName, person.LastName);
+                PersonCreated?.Invoke(this, EventArgs.Empty);
+                this.Close();
+            }
         }
 
 

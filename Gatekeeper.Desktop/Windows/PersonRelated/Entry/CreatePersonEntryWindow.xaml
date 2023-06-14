@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gatekeeper.Desktop.Windows"
         mc:Ignorable="d" FontSize="16" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
-        Title="CreatePersonEntryWindow" Height="350" Width="600">
+        Title="Vytvořit průchod osoby" Height="350" Width="600">
     <Grid>
 
         <Grid.ColumnDefinitions>

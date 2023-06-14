@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gatekeeper.Desktop.Windows"
         mc:Ignorable="d" FontSize="16" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
-        Title="CreatePersonWindow" Height="150" Width="350">
+        Title="Vytvořit osobu" Height="150" Width="350">
     <Grid>
 
         <StackPanel Orientation="Vertical" Margin="10">

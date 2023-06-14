@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gatekeeper.Desktop"
         mc:Ignorable="d" FontSize="16"
-        Title="MainWindow" Height="650" Width="900" MinHeight="400" MinWidth="600">
+        Title="Gatekeeper" Height="650" Width="900" MinHeight="400" MinWidth="600">
     <Grid>
 
         <Grid.ColumnDefinitions>

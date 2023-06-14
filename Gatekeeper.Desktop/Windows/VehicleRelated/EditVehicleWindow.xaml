@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gatekeeper.Desktop.Windows"
         mc:Ignorable="d" FontSize="16" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
-        Title="EditVehicleWindow" SizeToContent="WidthAndHeight">
+        Title="Upravit vozidlo" SizeToContent="WidthAndHeight">
     <Grid Margin="10">
         <StackPanel Orientation="Vertical" >
             <StackPanel Margin="0 0 0 5" Orientation="Horizontal">

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gatekeeper.Desktop.Windows"
         mc:Ignorable="d" FontSize="16" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
-        Title="EditPersonWindow" Height="270" Width="370">
+        Title="Upravit osobu" Height="270" Width="370">
     <Grid>
 
         <StackPanel Orientation="Vertical">

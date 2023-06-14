@@ -1,4 +1,5 @@
-﻿using GatekeeperLib.Data;
+﻿using GatekeeperLib;
+using GatekeeperLib.Data;
 using GatekeeperLib.Models;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -44,9 +45,29 @@ namespace Gatekeeper.Desktop.Windows
 
         private void savePersonButton_Click(object sender, RoutedEventArgs e)
         {
-            _db.EditPerson(_person.Id, firstNameTextBox.Text, lastNameTextBox.Text);
-            PersonEdited?.Invoke(this, EventArgs.Empty);
-            this.Close();
+            bool isGoodFormat = false;
+
+            if(firstNameTextBox.Text.IsPersonNameInCorrectFormat())
+            {
+                isGoodFormat = true;
+            }
+
+            if(lastNameTextBox.Text.IsPersonNameInCorrectFormat())
+            {
+                isGoodFormat = true;
+            }
+            else
+            {
+                isGoodFormat = false;
+            }
+
+            if(isGoodFormat)
+            {
+                _db.EditPerson(_person.Id, firstNameTextBox.Text.FirstLetterToCapital(), lastNameTextBox.Text.FirstLetterToCapital());
+                PersonEdited?.Invoke(this, EventArgs.Empty);
+                this.Close();
+
+            }
         }
     }
 }

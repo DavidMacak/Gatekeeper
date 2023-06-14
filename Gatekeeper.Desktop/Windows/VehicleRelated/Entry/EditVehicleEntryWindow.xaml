@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gatekeeper.Desktop.Windows"
         mc:Ignorable="d" WindowStartupLocation="CenterOwner" SizeToContent="WidthAndHeight" FontSize="16"
-        Title="EditVehicleEntryWindow">
+        Title="Upravit průjezd vozidla">
     <Grid Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>

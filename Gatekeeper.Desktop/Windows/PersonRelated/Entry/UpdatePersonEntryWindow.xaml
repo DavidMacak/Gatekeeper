@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gatekeeper.Desktop.Windows"
         mc:Ignorable="d" FontSize="16" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
-        Title="UpdatePersonEntryWindow" Height="210" Width="450">
+        Title="Přidat odchod osoby" Height="210" Width="450">
     <Grid>
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Vertical" Margin="10">
