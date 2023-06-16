@@ -1,0 +1,35 @@
+﻿@page
+@model Gatekeeper.Web.Pages.PersonEntriesPageModel
+@{
+    ViewData["Title"] = "Person Entries";
+}
+<h1>Přehled vstupů osob</h1>
+
+@if (Model.PersonEntries?.Count > 0)
+{
+    <br />
+    <h2>Seznam osob</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Jméno</th>
+                <th>Příjmení</th>
+                <th>Příchod</th>
+                <th>Odchod</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var personEntry in Model.PersonEntries)
+            {
+                <tr>
+                    <td>@personEntry.Id</td>
+                    <td>@personEntry.FirstName</td>
+                    <td>@personEntry.LastName</td>
+                    <td>@personEntry.EntryTime</td>
+                    <td>@personEntry.ExitTime</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
