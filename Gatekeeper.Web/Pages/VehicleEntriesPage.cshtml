@@ -1,0 +1,38 @@
+﻿@page
+@model Gatekeeper.Web.Pages.VehicleEntriesPageModel
+@{
+    ViewData["Title"] = "Průjezdy vozidel";
+}
+
+<h1>Přehled průjezdů vozidel</h1>
+<br />
+<h2>Seznam průjezdů:</h2>
+
+@if(Model.VehicleEntries.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>SPZ</td>
+                <td>Řidič</td>
+                <td>Příjezd</td>
+                <td>Odjezd</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var entry in Model.VehicleEntries)
+            {
+                <tr>
+                    <td>@entry.Id</td>
+                    <td>@entry.LicensePlate</td>
+                    <td>@(entry.FirstName + " " + @entry.LastName)</td>
+                    <td>@entry.EnterTime</td>
+                    <td>@entry.ExitTime</td>
+                    <td><a href="#">Upravit</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

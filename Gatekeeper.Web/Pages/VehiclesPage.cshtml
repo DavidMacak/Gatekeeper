@@ -1,0 +1,30 @@
+﻿@page
+@model Gatekeeper.Web.Pages.VehiclesPageModel
+@{
+    ViewData["Title"] = "Vozidla";
+}
+
+<h1>Seznam vozidel</h1>
+
+@if(Model.Vehicles.Count > 0)
+{
+    <br />
+    <h2>Vozidla v databázi:</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>SPZ</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var vehicle in Model.Vehicles)
+            {
+                <tr>
+                    <td>@vehicle.Id</td>
+                    <td>@vehicle.LicensePlate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
