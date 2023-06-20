@@ -6,27 +6,75 @@
 
 <h1>Přehled osob</h1>
 
-@if(Model.Persons?.Count > 0)
-{
-    <br />
-    <h2>Seznam osob</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Jméno</th>
-                <th>Příjmení</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach(var person in Model.Persons)
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+
+            <div class="row m-2">
+                <h2>Vytvořit osobu:</h2>
+                <form method="post">
+                    <div class="form-group">
+                        <label asp-for="@Model.FirstName">Jméno</label>
+                        <input class="form-control" asp-for="@Model.FirstName" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.LastName">Příjmení</label>
+                        <input class="form-control" asp-for="@Model.LastName" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Vytvořit</button>
+                </form>
+            </div>
+
+            <div class="row m-2">
+                <h2>Upravit osobu:</h2>
+                <form method="post">
+                    <div class="form-group">
+                        <label asp-for="@Model.FirstName">Jméno</label>
+                        <input class="form-control" asp-for="@Model.FirstName" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.LastName">Příjmení</label>
+                        <input class="form-control" asp-for="@Model.LastName" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upravit</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-sm">
+
+            @if (Model.Persons?.Count > 0)
             {
-                <tr>
-                    <td>@person.Id</td>
-                    <td>@person.FirstName</td>
-                    <td>@person.LastName</td>
-                </tr>
+                <h2>Seznam osob</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Jméno</th>
+                            <th>Příjmení</th>
+                            <th>Akce</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var person in Model.Persons)
+                        {
+                            <tr>
+                                <td>@person.Id</td>
+                                <td>@person.FirstName</td>
+                                <td>@person.LastName</td>
+                                <td>
+                                    <a asp-action="editPerson">Upravit</a>
+                                    <a asp-action="editPerson">Smazat</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             }
-        </tbody>
-    </table>
-}
+        </div>
+    </div>
+
+</div>
+
+
+
