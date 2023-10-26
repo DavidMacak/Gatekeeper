@@ -20,5 +20,4 @@ Aplikace pro záznam vstupů a odchodů osob a vozidel. Bude obsahovat WPF a ASP
 
 
 ## Instalace
-
-soon™
+Stačí publishnout DB.
