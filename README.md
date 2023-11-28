@@ -19,5 +19,3 @@ Aplikace pro záznam vstupů a odchodů osob a vozidel. Bude obsahovat WPF a ASP
 - ASP.NET webová aplikace se stejnými funkcemi jako WPF
 
 
-## Instalace
-Stačí publishnout DB.
